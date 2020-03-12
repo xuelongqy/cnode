@@ -1,5 +1,5 @@
-#include "cnode.hpp"
-#include <node/node.h>
+#include "cnode.h"
+#include "node.h"
 
 // 启动node
 int nodeStart(int argc, char *argv[]) {
