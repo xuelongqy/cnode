@@ -1185,7 +1185,7 @@ tools/.docmdlintstamp: $(LINT_MD_DOC_FILES)
 	@$(call available-node,$(run-lint-doc-md))
 	@touch $@
 
-LINT_MD_TARGETS = src lib benchmark test tools/doc tools/icu
+LINT_MD_TARGETS = src lib benchmark test tools/doc tools/icu ./src
 LINT_MD_ROOT_DOCS := $(wildcard *.md)
 LINT_MD_MISC_FILES := $(shell find $(LINT_MD_TARGETS) -type f \
 	! -path '*node_modules*' ! -path 'test/fixtures/*' -name '*.md') \
@@ -1365,7 +1365,7 @@ CONFLICT_RE=^>>>>>>> [0-9A-Fa-f]+|^<<<<<<< [A-Za-z]+
 
 # Related CI job: node-test-linter
 lint-ci: lint-js-ci lint-cpp lint-py lint-md lint-addon-docs
-	@if ! ( grep -IEqrs "$(CONFLICT_RE)" benchmark deps doc lib src test tools ) \
+	@if ! ( grep -IEqrs "$(CONFLICT_RE)" benchmark deps doc lib src test tools ./src ) \
 		&& ! ( find . -maxdepth 1 -type f | xargs grep -IEqs "$(CONFLICT_RE)" ); then \
 		exit 0 ; \
 	else \

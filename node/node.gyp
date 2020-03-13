@@ -309,7 +309,7 @@
   'targets': [
     {
       'target_name': '<(node_core_target_name)',
-      'type': 'executable',
+      'type': 'static_library',
 
       'defines': [
         'NODE_WANT_INTERNALS=1',
