@@ -1,0 +1,237 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		D12D49E6424D97DBC15AEF7C /* hdr_histogram.c in Sources */ = {isa = PBXBuildFile; fileRef = D80DDCC03E0165390C5C311F /* hdr_histogram.c */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		07DFBFE33BD3B17CBEEBC5E8 /* config.gypi */ = {isa = PBXFileReference; explicitFileType = sourcecode; name = config.gypi; path = ../../config.gypi; sourceTree = "<group>"; };
+		2B5D4BF1867074DC0A782DE5 /* histogram.gyp */ = {isa = PBXFileReference; explicitFileType = sourcecode; path = histogram.gyp; sourceTree = "<group>"; };
+		BF621D8A2BCCD909588823D6 /* libhistogram.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libhistogram.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		CDA5F6433F1CE3AE081F78C0 /* common.gypi */ = {isa = PBXFileReference; explicitFileType = sourcecode; name = common.gypi; path = ../../common.gypi; sourceTree = "<group>"; };
+		D80DDCC03E0165390C5C311F /* hdr_histogram.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = hdr_histogram.c; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		213DA167C0C79BAC8D4396FE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2A201AB8B8BC7122168D08D3 /* Build */ = {
+			isa = PBXGroup;
+			children = (
+				CDA5F6433F1CE3AE081F78C0 /* common.gypi */,
+				07DFBFE33BD3B17CBEEBC5E8 /* config.gypi */,
+				2B5D4BF1867074DC0A782DE5 /* histogram.gyp */,
+			);
+			name = Build;
+			sourceTree = "<group>";
+		};
+		4CFF70FB020CFD960395C1EF /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				D80DDCC03E0165390C5C311F /* hdr_histogram.c */,
+			);
+			name = Source;
+			path = src;
+			sourceTree = "<group>";
+		};
+		A8012EA21DFC3550A5CC554B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BF621D8A2BCCD909588823D6 /* libhistogram.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E166553199B1A56473626436 = {
+			isa = PBXGroup;
+			children = (
+				4CFF70FB020CFD960395C1EF /* Source */,
+				A8012EA21DFC3550A5CC554B /* Products */,
+				2A201AB8B8BC7122168D08D3 /* Build */,
+			);
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A2E9EEA3CF256A99DB683E08 /* histogram */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 47608470D33E3EF554873C4B /* Build configuration list for PBXNativeTarget "histogram" */;
+			buildPhases = (
+				0E3506DA200CBC7219BD5991 /* Sources */,
+				213DA167C0C79BAC8D4396FE /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = histogram;
+			productName = histogram;
+			productReference = BF621D8A2BCCD909588823D6 /* libhistogram.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9A7EE5925C165D5EBD6E6F74 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+			};
+			buildConfigurationList = B51F36F4CE02CA1A149B876C /* Build configuration list for PBXProject "histogram" */;
+			compatibilityVersion = "Xcode 3.2";
+			hasScannedForEncodings = 1;
+			mainGroup = E166553199B1A56473626436;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A2E9EEA3CF256A99DB683E08 /* histogram */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0E3506DA200CBC7219BD5991 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D12D49E6424D97DBC15AEF7C /* hdr_histogram.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		2D8D81DF88432D33898C3742 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = x86_64;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++1y";
+				CLANG_CXX_LIBRARY = "libc++";
+				EXECUTABLE_PREFIX = lib;
+				GCC_CW_ASM_SYNTAX = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_CPP_EXCEPTIONS = NO;
+				GCC_ENABLE_CPP_RTTI = NO;
+				GCC_ENABLE_PASCAL_STRINGS = NO;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					V8_DEPRECATION_WARNINGS,
+					V8_IMMINENT_DEPRECATION_WARNINGS,
+					"_DARWIN_USE_64_BIT_INODE=1",
+					OPENSSL_NO_PINSHARED,
+					OPENSSL_THREADS,
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				HEADER_SEARCH_PATHS = src;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				OTHER_CFLAGS = "-fno-strict-aliasing";
+				PREBINDING = NO;
+				PRODUCT_NAME = histogram;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wall",
+					"-Wendif-labels",
+					"-W",
+					"-Wno-unused-parameter",
+				);
+			};
+			name = Release;
+		};
+		97EEF805AF5F808E33AB7C60 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INTERMEDIATE_DIR = "$(PROJECT_DERIVED_FILE_DIR)/$(CONFIGURATION)";
+				SHARED_INTERMEDIATE_DIR = "$(SYMROOT)/DerivedSources/$(CONFIGURATION)";
+			};
+			name = Release;
+		};
+		9E1F8F26B0FD6E7850AF3844 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INTERMEDIATE_DIR = "$(PROJECT_DERIVED_FILE_DIR)/$(CONFIGURATION)";
+				SHARED_INTERMEDIATE_DIR = "$(SYMROOT)/DerivedSources/$(CONFIGURATION)";
+			};
+			name = Debug;
+		};
+		D3138BFD0EFA40DB5AF2AF21 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = x86_64;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++1y";
+				CLANG_CXX_LIBRARY = "libc++";
+				EXECUTABLE_PREFIX = lib;
+				GCC_CW_ASM_SYNTAX = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_CPP_EXCEPTIONS = NO;
+				GCC_ENABLE_CPP_RTTI = NO;
+				GCC_ENABLE_PASCAL_STRINGS = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					V8_DEPRECATION_WARNINGS,
+					V8_IMMINENT_DEPRECATION_WARNINGS,
+					"_DARWIN_USE_64_BIT_INODE=1",
+					OPENSSL_NO_PINSHARED,
+					OPENSSL_THREADS,
+					DEBUG,
+					_DEBUG,
+					V8_ENABLE_CHECKS,
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				HEADER_SEARCH_PATHS = src;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				OTHER_CFLAGS = "-fno-strict-aliasing";
+				PREBINDING = NO;
+				PRODUCT_NAME = histogram;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wall",
+					"-Wendif-labels",
+					"-W",
+					"-Wno-unused-parameter",
+				);
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		47608470D33E3EF554873C4B /* Build configuration list for PBXNativeTarget "histogram" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2D8D81DF88432D33898C3742 /* Release */,
+				D3138BFD0EFA40DB5AF2AF21 /* Debug */,
+			);
+			defaultConfigurationIsVisible = 1;
+			defaultConfigurationName = Release;
+		};
+		B51F36F4CE02CA1A149B876C /* Build configuration list for PBXProject "histogram" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				97EEF805AF5F808E33AB7C60 /* Release */,
+				9E1F8F26B0FD6E7850AF3844 /* Debug */,
+			);
+			defaultConfigurationIsVisible = 1;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 9A7EE5925C165D5EBD6E6F74 /* Project object */;
+}

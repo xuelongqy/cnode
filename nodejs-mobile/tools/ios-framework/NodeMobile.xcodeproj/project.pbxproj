@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3C02AFD41FA919C30053C191 /* NodeMobile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3C02AFD31FA919C30053C191 /* NodeMobile.cpp */; };
+		7F73C9D2241BCB82002E2E7E /* cnode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7F73C9D0241BCB82002E2E7E /* cnode.cpp */; };
+		7F73C9D3241BCB82002E2E7E /* cnode.h in Headers */ = {isa = PBXBuildFile; fileRef = 7F73C9D1241BCB82002E2E7E /* cnode.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D9A7619D1F7C63A8006AFE86 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 331917C21EC4702A00F93D52 /* CoreFoundation.framework */; };
 		D9A7619E1F7C63A8006AFE86 /* libcares.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3376C9191EC3922F0007AD59 /* libcares.a */; };
 		D9A7619F1F7C63A8006AFE86 /* libChakraCoreStatic.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3376C91A1EC3922F0007AD59 /* libChakraCoreStatic.a */; };
@@ -18,7 +19,6 @@
 		D9A761A41F7C63A8006AFE86 /* libopenssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3376C91E1EC3922F0007AD59 /* libopenssl.a */; };
 		D9A761A51F7C63A8006AFE86 /* libuv.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3376C91F1EC3922F0007AD59 /* libuv.a */; };
 		D9A761A61F7C63A8006AFE86 /* libzlib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3376C9201EC3922F0007AD59 /* libzlib.a */; };
-		D9A762281F7C675E006097B1 /* NodeMobile.h in Headers */ = {isa = PBXBuildFile; fileRef = D9A762261F7C674F006097B1 /* NodeMobile.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,10 +32,10 @@
 		3376C91E1EC3922F0007AD59 /* libopenssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libopenssl.a; path = bin/libopenssl.a; sourceTree = "<group>"; };
 		3376C91F1EC3922F0007AD59 /* libuv.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libuv.a; path = bin/libuv.a; sourceTree = "<group>"; };
 		3376C9201EC3922F0007AD59 /* libzlib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libzlib.a; path = bin/libzlib.a; sourceTree = "<group>"; };
-		3C02AFD31FA919C30053C191 /* NodeMobile.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = NodeMobile.cpp; sourceTree = "<group>"; };
+		7F73C9D0241BCB82002E2E7E /* cnode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = cnode.cpp; path = ../../../../src/cnode.cpp; sourceTree = "<group>"; };
+		7F73C9D1241BCB82002E2E7E /* cnode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = cnode.h; path = ../../../../src/cnode.h; sourceTree = "<group>"; };
 		D9A761AE1F7C63A8006AFE86 /* NodeMobile.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NodeMobile.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9A762251F7C674F006097B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D9A762261F7C674F006097B1 /* NodeMobile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NodeMobile.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,9 +96,9 @@
 		D9A762241F7C674F006097B1 /* NodeMobile */ = {
 			isa = PBXGroup;
 			children = (
+				7F73C9D0241BCB82002E2E7E /* cnode.cpp */,
+				7F73C9D1241BCB82002E2E7E /* cnode.h */,
 				D9A762251F7C674F006097B1 /* Info.plist */,
-				D9A762261F7C674F006097B1 /* NodeMobile.h */,
-				3C02AFD31FA919C30053C191 /* NodeMobile.cpp */,
 			);
 			path = NodeMobile;
 			sourceTree = "<group>";
@@ -110,7 +110,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D9A762281F7C675E006097B1 /* NodeMobile.h in Headers */,
+				7F73C9D3241BCB82002E2E7E /* cnode.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -154,6 +154,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
 			mainGroup = 3376C9031EC391130007AD59;
@@ -181,7 +182,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3C02AFD41FA919C30053C191 /* NodeMobile.cpp in Sources */,
+				7F73C9D2241BCB82002E2E7E /* cnode.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
