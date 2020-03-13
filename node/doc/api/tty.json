@@ -1,0 +1,267 @@
+{
+  "type": "module",
+  "source": "doc/api/tty.md",
+  "modules": [
+    {
+      "textRaw": "TTY",
+      "name": "tty",
+      "introduced_in": "v0.10.0",
+      "stability": 2,
+      "stabilityText": "Stable",
+      "desc": "<p>The <code>tty</code> module provides the <code>tty.ReadStream</code> and <code>tty.WriteStream</code> classes.\nIn most cases, it will not be necessary or possible to use this module directly.\nHowever, it can be accessed using:</p>\n<pre><code class=\"language-js\">const tty = require('tty');\n</code></pre>\n<p>When Node.js detects that it is being run with a text terminal (\"TTY\")\nattached, <a href=\"process.html#process_process_stdin\"><code>process.stdin</code></a> will, by default, be initialized as an instance of\n<code>tty.ReadStream</code> and both <a href=\"process.html#process_process_stdout\"><code>process.stdout</code></a> and <a href=\"process.html#process_process_stderr\"><code>process.stderr</code></a> will, by\ndefault be instances of <code>tty.WriteStream</code>. The preferred method of determining\nwhether Node.js is being run within a TTY context is to check that the value of\nthe <code>process.stdout.isTTY</code> property is <code>true</code>:</p>\n<pre><code class=\"language-sh\">$ node -p -e \"Boolean(process.stdout.isTTY)\"\ntrue\n$ node -p -e \"Boolean(process.stdout.isTTY)\" | cat\nfalse\n</code></pre>\n<p>In most cases, there should be little to no reason for an application to\nmanually create instances of the <code>tty.ReadStream</code> and <code>tty.WriteStream</code>\nclasses.</p>",
+      "modules": [
+        {
+          "textRaw": "Class: `tty.ReadStream`",
+          "name": "class:_`tty.readstream`",
+          "meta": {
+            "added": [
+              "v0.5.8"
+            ],
+            "changes": []
+          },
+          "desc": "<ul>\n<li>Extends: <a href=\"net.html#net_class_net_socket\" class=\"type\">&lt;net.Socket&gt;</a></li>\n</ul>\n<p>Represents the readable side of a TTY. In normal circumstances\n<a href=\"process.html#process_process_stdin\"><code>process.stdin</code></a> will be the only <code>tty.ReadStream</code> instance in a Node.js\nprocess and there should be no reason to create additional instances.</p>",
+          "modules": [
+            {
+              "textRaw": "`readStream.isRaw`",
+              "name": "`readstream.israw`",
+              "meta": {
+                "added": [
+                  "v0.7.7"
+                ],
+                "changes": []
+              },
+              "desc": "<p>A <code>boolean</code> that is <code>true</code> if the TTY is currently configured to operate as a\nraw device. Defaults to <code>false</code>.</p>",
+              "type": "module",
+              "displayName": "`readStream.isRaw`"
+            },
+            {
+              "textRaw": "`readStream.isTTY`",
+              "name": "`readstream.istty`",
+              "meta": {
+                "added": [
+                  "v0.5.8"
+                ],
+                "changes": []
+              },
+              "desc": "<p>A <code>boolean</code> that is always <code>true</code> for <code>tty.ReadStream</code> instances.</p>",
+              "type": "module",
+              "displayName": "`readStream.isTTY`"
+            },
+            {
+              "textRaw": "`readStream.setRawMode(mode)`",
+              "name": "`readstream.setrawmode(mode)`",
+              "meta": {
+                "added": [
+                  "v0.7.7"
+                ],
+                "changes": []
+              },
+              "desc": "<ul>\n<li><code>mode</code> <a href=\"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Boolean_type\" class=\"type\">&lt;boolean&gt;</a> If <code>true</code>, configures the <code>tty.ReadStream</code> to operate as a\nraw device. If <code>false</code>, configures the <code>tty.ReadStream</code> to operate in its\ndefault mode. The <code>readStream.isRaw</code> property will be set to the resulting\nmode.</li>\n<li>Returns: <a href=\"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this\" class=\"type\">&lt;this&gt;</a> The read stream instance.</li>\n</ul>\n<p>Allows configuration of <code>tty.ReadStream</code> so that it operates as a raw device.</p>\n<p>When in raw mode, input is always available character-by-character, not\nincluding modifiers. Additionally, all special processing of characters by the\nterminal is disabled, including echoing input characters.\n<code>CTRL</code>+<code>C</code> will no longer cause a <code>SIGINT</code> when in this mode.</p>",
+              "type": "module",
+              "displayName": "`readStream.setRawMode(mode)`"
+            }
+          ],
+          "type": "module",
+          "displayName": "Class: `tty.ReadStream`"
+        },
+        {
+          "textRaw": "Class: `tty.WriteStream`",
+          "name": "class:_`tty.writestream`",
+          "meta": {
+            "added": [
+              "v0.5.8"
+            ],
+            "changes": []
+          },
+          "desc": "<ul>\n<li>Extends: <a href=\"net.html#net_class_net_socket\" class=\"type\">&lt;net.Socket&gt;</a></li>\n</ul>\n<p>Represents the writable side of a TTY. In normal circumstances,\n<a href=\"process.html#process_process_stdout\"><code>process.stdout</code></a> and <a href=\"process.html#process_process_stderr\"><code>process.stderr</code></a> will be the only\n<code>tty.WriteStream</code> instances created for a Node.js process and there\nshould be no reason to create additional instances.</p>",
+          "modules": [
+            {
+              "textRaw": "Event: `'resize'`",
+              "name": "event:_`'resize'`",
+              "meta": {
+                "added": [
+                  "v0.7.7"
+                ],
+                "changes": []
+              },
+              "desc": "<p>The <code>'resize'</code> event is emitted whenever either of the <code>writeStream.columns</code>\nor <code>writeStream.rows</code> properties have changed. No arguments are passed to the\nlistener callback when called.</p>\n<pre><code class=\"language-js\">process.stdout.on('resize', () => {\n  console.log('screen size has changed!');\n  console.log(`${process.stdout.columns}x${process.stdout.rows}`);\n});\n</code></pre>",
+              "type": "module",
+              "displayName": "Event: `'resize'`"
+            },
+            {
+              "textRaw": "`writeStream.clearLine(dir[, callback])`",
+              "name": "`writestream.clearline(dir[,_callback])`",
+              "meta": {
+                "added": [
+                  "v0.7.7"
+                ],
+                "changes": [
+                  {
+                    "version": "v12.7.0",
+                    "pr-url": "https://github.com/nodejs/node/pull/28721",
+                    "description": "The stream's write() callback and return value are exposed."
+                  }
+                ]
+              },
+              "desc": "<ul>\n<li>\n<p><code>dir</code> <a href=\"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type\" class=\"type\">&lt;number&gt;</a></p>\n<ul>\n<li><code>-1</code>: to the left from cursor</li>\n<li><code>1</code>: to the right from cursor</li>\n<li><code>0</code>: the entire line</li>\n</ul>\n</li>\n<li><code>callback</code> <a href=\"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function\" class=\"type\">&lt;Function&gt;</a> Invoked once the operation completes.</li>\n<li>Returns: <a href=\"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Boolean_type\" class=\"type\">&lt;boolean&gt;</a> <code>false</code> if the stream wishes for the calling code to wait\nfor the <code>'drain'</code> event to be emitted before continuing to write additional\ndata; otherwise <code>true</code>.</li>\n</ul>\n<p><code>writeStream.clearLine()</code> clears the current line of this <code>WriteStream</code> in a\ndirection identified by <code>dir</code>.</p>",
+              "type": "module",
+              "displayName": "`writeStream.clearLine(dir[, callback])`"
+            },
+            {
+              "textRaw": "`writeStream.clearScreenDown([callback])`",
+              "name": "`writestream.clearscreendown([callback])`",
+              "meta": {
+                "added": [
+                  "v0.7.7"
+                ],
+                "changes": [
+                  {
+                    "version": "v12.7.0",
+                    "pr-url": "https://github.com/nodejs/node/pull/28721",
+                    "description": "The stream's write() callback and return value are exposed."
+                  }
+                ]
+              },
+              "desc": "<ul>\n<li><code>callback</code> <a href=\"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function\" class=\"type\">&lt;Function&gt;</a> Invoked once the operation completes.</li>\n<li>Returns: <a href=\"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Boolean_type\" class=\"type\">&lt;boolean&gt;</a> <code>false</code> if the stream wishes for the calling code to wait\nfor the <code>'drain'</code> event to be emitted before continuing to write additional\ndata; otherwise <code>true</code>.</li>\n</ul>\n<p><code>writeStream.clearScreenDown()</code> clears this <code>WriteStream</code> from the current\ncursor down.</p>",
+              "type": "module",
+              "displayName": "`writeStream.clearScreenDown([callback])`"
+            },
+            {
+              "textRaw": "`writeStream.columns`",
+              "name": "`writestream.columns`",
+              "meta": {
+                "added": [
+                  "v0.7.7"
+                ],
+                "changes": []
+              },
+              "desc": "<p>A <code>number</code> specifying the number of columns the TTY currently has. This property\nis updated whenever the <code>'resize'</code> event is emitted.</p>",
+              "type": "module",
+              "displayName": "`writeStream.columns`"
+            },
+            {
+              "textRaw": "`writeStream.cursorTo(x[, y][, callback])`",
+              "name": "`writestream.cursorto(x[,_y][,_callback])`",
+              "meta": {
+                "added": [
+                  "v0.7.7"
+                ],
+                "changes": [
+                  {
+                    "version": "v12.7.0",
+                    "pr-url": "https://github.com/nodejs/node/pull/28721",
+                    "description": "The stream's write() callback and return value are exposed."
+                  }
+                ]
+              },
+              "desc": "<ul>\n<li><code>x</code> <a href=\"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type\" class=\"type\">&lt;number&gt;</a></li>\n<li><code>y</code> <a href=\"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type\" class=\"type\">&lt;number&gt;</a></li>\n<li><code>callback</code> <a href=\"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function\" class=\"type\">&lt;Function&gt;</a> Invoked once the operation completes.</li>\n<li>Returns: <a href=\"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Boolean_type\" class=\"type\">&lt;boolean&gt;</a> <code>false</code> if the stream wishes for the calling code to wait\nfor the <code>'drain'</code> event to be emitted before continuing to write additional\ndata; otherwise <code>true</code>.</li>\n</ul>\n<p><code>writeStream.cursorTo()</code> moves this <code>WriteStream</code>'s cursor to the specified\nposition.</p>",
+              "type": "module",
+              "displayName": "`writeStream.cursorTo(x[, y][, callback])`"
+            },
+            {
+              "textRaw": "`writeStream.getColorDepth([env])`",
+              "name": "`writestream.getcolordepth([env])`",
+              "meta": {
+                "added": [
+                  "v9.9.0"
+                ],
+                "changes": []
+              },
+              "desc": "<ul>\n<li><code>env</code> <a href=\"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object\" class=\"type\">&lt;Object&gt;</a> An object containing the environment variables to check. This\nenables simulating the usage of a specific terminal. <strong>Default:</strong>\n<code>process.env</code>.</li>\n<li>Returns: <a href=\"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type\" class=\"type\">&lt;number&gt;</a></li>\n</ul>\n<p>Returns:</p>\n<ul>\n<li><code>1</code> for 2,</li>\n<li><code>4</code> for 16,</li>\n<li><code>8</code> for 256,</li>\n<li><code>24</code> for 16,777,216\ncolors supported.</li>\n</ul>\n<p>Use this to determine what colors the terminal supports. Due to the nature of\ncolors in terminals it is possible to either have false positives or false\nnegatives. It depends on process information and the environment variables that\nmay lie about what terminal is used.\nIt is possible to pass in an <code>env</code> object to simulate the usage of a specific\nterminal. This can be useful to check how specific environment settings behave.</p>\n<p>To enforce a specific color support, use one of the below environment settings.</p>\n<ul>\n<li>2 colors: <code>FORCE_COLOR = 0</code> (Disables colors)</li>\n<li>16 colors: <code>FORCE_COLOR = 1</code></li>\n<li>256 colors: <code>FORCE_COLOR = 2</code></li>\n<li>16,777,216 colors: <code>FORCE_COLOR = 3</code></li>\n</ul>\n<p>Disabling color support is also possible by using the <code>NO_COLOR</code> and\n<code>NODE_DISABLE_COLORS</code> environment variables.</p>",
+              "type": "module",
+              "displayName": "`writeStream.getColorDepth([env])`"
+            },
+            {
+              "textRaw": "`writeStream.getWindowSize()`",
+              "name": "`writestream.getwindowsize()`",
+              "meta": {
+                "added": [
+                  "v0.7.7"
+                ],
+                "changes": []
+              },
+              "desc": "<ul>\n<li>Returns: <a href=\"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type\" class=\"type\">&lt;number[]&gt;</a></li>\n</ul>\n<p><code>writeStream.getWindowSize()</code> returns the size of the <a href=\"tty.html\">TTY</a>\ncorresponding to this <code>WriteStream</code>. The array is of the type\n<code>[numColumns, numRows]</code> where <code>numColumns</code> and <code>numRows</code> represent the number\nof columns and rows in the corresponding <a href=\"tty.html\">TTY</a>.</p>",
+              "type": "module",
+              "displayName": "`writeStream.getWindowSize()`"
+            },
+            {
+              "textRaw": "`writeStream.hasColors([count][, env])`",
+              "name": "`writestream.hascolors([count][,_env])`",
+              "meta": {
+                "added": [
+                  "v11.13.0"
+                ],
+                "changes": []
+              },
+              "desc": "<ul>\n<li><code>count</code> <a href=\"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type\" class=\"type\">&lt;integer&gt;</a> The number of colors that are requested (minimum 2).\n<strong>Default:</strong> 16.</li>\n<li><code>env</code> <a href=\"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object\" class=\"type\">&lt;Object&gt;</a> An object containing the environment variables to check. This\nenables simulating the usage of a specific terminal. <strong>Default:</strong>\n<code>process.env</code>.</li>\n<li>Returns: <a href=\"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Boolean_type\" class=\"type\">&lt;boolean&gt;</a></li>\n</ul>\n<p>Returns <code>true</code> if the <code>writeStream</code> supports at least as many colors as provided\nin <code>count</code>. Minimum support is 2 (black and white).</p>\n<p>This has the same false positives and negatives as described in\n<a href=\"#tty_writestream_getcolordepth_env\"><code>writeStream.getColorDepth()</code></a>.</p>\n<pre><code class=\"language-js\">process.stdout.hasColors();\n// Returns true or false depending on if `stdout` supports at least 16 colors.\nprocess.stdout.hasColors(256);\n// Returns true or false depending on if `stdout` supports at least 256 colors.\nprocess.stdout.hasColors({ TMUX: '1' });\n// Returns true.\nprocess.stdout.hasColors(2 ** 24, { TMUX: '1' });\n// Returns false (the environment setting pretends to support 2 ** 8 colors).\n</code></pre>",
+              "type": "module",
+              "displayName": "`writeStream.hasColors([count][, env])`"
+            },
+            {
+              "textRaw": "`writeStream.isTTY`",
+              "name": "`writestream.istty`",
+              "meta": {
+                "added": [
+                  "v0.5.8"
+                ],
+                "changes": []
+              },
+              "desc": "<p>A <code>boolean</code> that is always <code>true</code>.</p>",
+              "type": "module",
+              "displayName": "`writeStream.isTTY`"
+            },
+            {
+              "textRaw": "`writeStream.moveCursor(dx, dy[, callback])`",
+              "name": "`writestream.movecursor(dx,_dy[,_callback])`",
+              "meta": {
+                "added": [
+                  "v0.7.7"
+                ],
+                "changes": [
+                  {
+                    "version": "v12.7.0",
+                    "pr-url": "https://github.com/nodejs/node/pull/28721",
+                    "description": "The stream's write() callback and return value are exposed."
+                  }
+                ]
+              },
+              "desc": "<ul>\n<li><code>dx</code> <a href=\"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type\" class=\"type\">&lt;number&gt;</a></li>\n<li><code>dy</code> <a href=\"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type\" class=\"type\">&lt;number&gt;</a></li>\n<li><code>callback</code> <a href=\"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function\" class=\"type\">&lt;Function&gt;</a> Invoked once the operation completes.</li>\n<li>Returns: <a href=\"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Boolean_type\" class=\"type\">&lt;boolean&gt;</a> <code>false</code> if the stream wishes for the calling code to wait\nfor the <code>'drain'</code> event to be emitted before continuing to write additional\ndata; otherwise <code>true</code>.</li>\n</ul>\n<p><code>writeStream.moveCursor()</code> moves this <code>WriteStream</code>'s cursor <em>relative</em> to its\ncurrent position.</p>",
+              "type": "module",
+              "displayName": "`writeStream.moveCursor(dx, dy[, callback])`"
+            },
+            {
+              "textRaw": "`writeStream.rows`",
+              "name": "`writestream.rows`",
+              "meta": {
+                "added": [
+                  "v0.7.7"
+                ],
+                "changes": []
+              },
+              "desc": "<p>A <code>number</code> specifying the number of rows the TTY currently has. This property\nis updated whenever the <code>'resize'</code> event is emitted.</p>",
+              "type": "module",
+              "displayName": "`writeStream.rows`"
+            }
+          ],
+          "type": "module",
+          "displayName": "Class: `tty.WriteStream`"
+        },
+        {
+          "textRaw": "`tty.isatty(fd)`",
+          "name": "`tty.isatty(fd)`",
+          "meta": {
+            "added": [
+              "v0.5.8"
+            ],
+            "changes": []
+          },
+          "desc": "<ul>\n<li><code>fd</code> <a href=\"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type\" class=\"type\">&lt;number&gt;</a> A numeric file descriptor</li>\n<li>Returns: <a href=\"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Boolean_type\" class=\"type\">&lt;boolean&gt;</a></li>\n</ul>\n<p>The <code>tty.isatty()</code> method returns <code>true</code> if the given <code>fd</code> is associated with\na TTY and <code>false</code> if it is not, including whenever <code>fd</code> is not a non-negative\ninteger.</p>",
+          "type": "module",
+          "displayName": "`tty.isatty(fd)`"
+        }
+      ],
+      "type": "module",
+      "displayName": "TTY"
+    }
+  ]
+}

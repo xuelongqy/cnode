@@ -1,0 +1,71 @@
+{
+  "type": "module",
+  "source": "doc/api/string_decoder.md",
+  "modules": [
+    {
+      "textRaw": "String Decoder",
+      "name": "string_decoder",
+      "introduced_in": "v0.10.0",
+      "stability": 2,
+      "stabilityText": "Stable",
+      "desc": "<p>The <code>string_decoder</code> module provides an API for decoding <code>Buffer</code> objects into\nstrings in a manner that preserves encoded multi-byte UTF-8 and UTF-16\ncharacters. It can be accessed using:</p>\n<pre><code class=\"language-js\">const { StringDecoder } = require('string_decoder');\n</code></pre>\n<p>The following example shows the basic use of the <code>StringDecoder</code> class.</p>\n<pre><code class=\"language-js\">const { StringDecoder } = require('string_decoder');\nconst decoder = new StringDecoder('utf8');\n\nconst cent = Buffer.from([0xC2, 0xA2]);\nconsole.log(decoder.write(cent));\n\nconst euro = Buffer.from([0xE2, 0x82, 0xAC]);\nconsole.log(decoder.write(euro));\n</code></pre>\n<p>When a <code>Buffer</code> instance is written to the <code>StringDecoder</code> instance, an\ninternal buffer is used to ensure that the decoded string does not contain\nany incomplete multibyte characters. These are held in the buffer until the\nnext call to <code>stringDecoder.write()</code> or until <code>stringDecoder.end()</code> is called.</p>\n<p>In the following example, the three UTF-8 encoded bytes of the European Euro\nsymbol (<code>€</code>) are written over three separate operations:</p>\n<pre><code class=\"language-js\">const { StringDecoder } = require('string_decoder');\nconst decoder = new StringDecoder('utf8');\n\ndecoder.write(Buffer.from([0xE2]));\ndecoder.write(Buffer.from([0x82]));\nconsole.log(decoder.end(Buffer.from([0xAC])));\n</code></pre>",
+      "modules": [
+        {
+          "textRaw": "Class: `StringDecoder`",
+          "name": "class:_`stringdecoder`",
+          "modules": [
+            {
+              "textRaw": "`new StringDecoder([encoding])`",
+              "name": "`new_stringdecoder([encoding])`",
+              "meta": {
+                "added": [
+                  "v0.1.99"
+                ],
+                "changes": []
+              },
+              "desc": "<ul>\n<li><code>encoding</code> <a href=\"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type\" class=\"type\">&lt;string&gt;</a> The character encoding the <code>StringDecoder</code> will use.\n<strong>Default:</strong> <code>'utf8'</code>.</li>\n</ul>\n<p>Creates a new <code>StringDecoder</code> instance.</p>",
+              "type": "module",
+              "displayName": "`new StringDecoder([encoding])`"
+            },
+            {
+              "textRaw": "`stringDecoder.end([buffer])`",
+              "name": "`stringdecoder.end([buffer])`",
+              "meta": {
+                "added": [
+                  "v0.9.3"
+                ],
+                "changes": []
+              },
+              "desc": "<ul>\n<li><code>buffer</code> <a href=\"buffer.html#buffer_class_buffer\" class=\"type\">&lt;Buffer&gt;</a> | <a href=\"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray\" class=\"type\">&lt;TypedArray&gt;</a> | <a href=\"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DataView\" class=\"type\">&lt;DataView&gt;</a> A <code>Buffer</code>, or <code>TypedArray</code>, or\n<code>DataView</code> containing the bytes to decode.</li>\n<li>Returns: <a href=\"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type\" class=\"type\">&lt;string&gt;</a></li>\n</ul>\n<p>Returns any remaining input stored in the internal buffer as a string. Bytes\nrepresenting incomplete UTF-8 and UTF-16 characters will be replaced with\nsubstitution characters appropriate for the character encoding.</p>\n<p>If the <code>buffer</code> argument is provided, one final call to <code>stringDecoder.write()</code>\nis performed before returning the remaining input.</p>",
+              "type": "module",
+              "displayName": "`stringDecoder.end([buffer])`"
+            },
+            {
+              "textRaw": "`stringDecoder.write(buffer)`",
+              "name": "`stringdecoder.write(buffer)`",
+              "meta": {
+                "added": [
+                  "v0.1.99"
+                ],
+                "changes": [
+                  {
+                    "version": "v8.0.0",
+                    "pr-url": "https://github.com/nodejs/node/pull/9618",
+                    "description": "Each invalid character is now replaced by a single replacement character instead of one for each individual byte."
+                  }
+                ]
+              },
+              "desc": "<ul>\n<li><code>buffer</code> <a href=\"buffer.html#buffer_class_buffer\" class=\"type\">&lt;Buffer&gt;</a> | <a href=\"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray\" class=\"type\">&lt;TypedArray&gt;</a> | <a href=\"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DataView\" class=\"type\">&lt;DataView&gt;</a> A <code>Buffer</code>, or <code>TypedArray</code>, or\n<code>DataView</code> containing the bytes to decode.</li>\n<li>Returns: <a href=\"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type\" class=\"type\">&lt;string&gt;</a></li>\n</ul>\n<p>Returns a decoded string, ensuring that any incomplete multibyte characters at\nthe end of the <code>Buffer</code>, or <code>TypedArray</code>, or <code>DataView</code> are omitted from the\nreturned string and stored in an internal buffer for the next call to\n<code>stringDecoder.write()</code> or <code>stringDecoder.end()</code>.</p>",
+              "type": "module",
+              "displayName": "`stringDecoder.write(buffer)`"
+            }
+          ],
+          "type": "module",
+          "displayName": "Class: `StringDecoder`"
+        }
+      ],
+      "type": "module",
+      "displayName": "String Decoder"
+    }
+  ]
+}

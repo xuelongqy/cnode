@@ -1,0 +1,30 @@
+beginning
+test.vm:1
+throw new Error("boo!")
+^
+
+Error: boo!
+   at Global code (test.vm:*)
+   at Script.prototype.runInThisContext (vm.js:*:*)      
+   at runInThisContext (vm.js:*)
+   at Anonymous function (*test*message*vm_display_runtime_error.js:*)
+   at Module.prototype._compile (internal/modules/cjs/loader.js:*)
+   at Module._extensions[.js] (internal/modules/cjs/loader.js:*)
+   at Module.prototype.load (internal/modules/cjs/loader.js:*)
+   at tryModuleLoad (internal/modules/cjs/loader.js:*)
+   at Module._load (internal/modules/cjs/loader.js:*)
+   at Module.runMain (internal/modules/cjs/loader.js:*)
+test.vm:1
+throw new Error("spooky!")
+^
+Error: spooky!
+   at Global code (test.vm:*)
+   at Script.prototype.runInThisContext (vm.js:*:*)      
+   at runInThisContext (vm.js:*)
+   at Anonymous function (*test*message*vm_display_runtime_error.js:*)
+   at Module.prototype._compile (internal/modules/cjs/loader.js:*)
+   at Module._extensions[.js] (internal/modules/cjs/loader.js:*)
+   at Module.prototype.load (internal/modules/cjs/loader.js:*)
+   at tryModuleLoad (internal/modules/cjs/loader.js:*)
+   at Module._load (internal/modules/cjs/loader.js:*)
+   at Module.runMain (internal/modules/cjs/loader.js:*)

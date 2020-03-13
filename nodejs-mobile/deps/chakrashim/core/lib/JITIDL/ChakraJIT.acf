@@ -1,0 +1,15 @@
+//-------------------------------------------------------------------------------------------------------
+// Copyright (C) Microsoft. All rights reserved.
+// Licensed under the MIT license. See LICENSE.txt file in the project root for full license information.
+//-------------------------------------------------------------------------------------------------------
+
+typedef [context_handle_noserialize] PTHREADCONTEXT_HANDLE;
+typedef [context_handle_noserialize] PSCRIPTCONTEXT_HANDLE;
+
+[
+    type_strict_context_handle
+]
+interface IChakraJIT
+{
+    typedef [encode, decode] pCodeGenWorkItemIDL;
+}

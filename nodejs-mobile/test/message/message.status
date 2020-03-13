@@ -1,0 +1,45 @@
+prefix message
+
+# To mark a test as flaky, list the test name in the appropriate section
+# below, without ".js", followed by ": PASS,FLAKY". Example:
+# sample-test                        : PASS,FLAKY
+
+[true] # This section applies to all platforms
+
+[$system==win32]
+
+[$system==linux]
+
+[$system==macos]
+
+[$system==solaris] # Also applies to SmartOS
+
+[$system==freebsd]
+
+[$jsEngine==chakracore]
+# These tests are failing for Node-Chakracore and should eventually be fixed
+esm_display_syntax_error : SKIP
+esm_display_syntax_error_import : SKIP
+esm_display_syntax_error_import_module : SKIP
+esm_display_syntax_error_module : SKIP
+
+# These tests fail because of https://github.com/nodejs/node/pull/19003,
+# which uses Error.captureStackTrace internally
+events_unhandled_error_common_trace : SKIP
+events_unhandled_error_nexttick : SKIP
+events_unhandled_error_sameline : SKIP
+
+[$system==android]
+#
+# Tests that use child process that currently is not supported on mobile
+#
+eval_messages : SKIP
+stdin_messages : SKIP
+
+[$system==ios]
+#
+# Tests that try to spawn processes, but fail with spawn EPERM
+# These tests are expected to always fail, since iOS won't allow spawning new processes
+#
+eval_messages : SKIP
+stdin_messages : SKIP

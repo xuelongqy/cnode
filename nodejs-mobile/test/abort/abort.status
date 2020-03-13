@@ -1,0 +1,40 @@
+prefix abort
+
+# To mark a test as flaky, list the test name in the appropriate section
+# below, without ".js", followed by ": PASS,FLAKY". Example:
+# sample-test                        : PASS,FLAKY
+
+[true] # This section applies to all platforms
+
+[$system==win32]
+
+[$system==linux]
+
+[$system==macos]
+
+[$system==solaris]
+
+[$system==freebsd]
+
+[$system==aix]
+
+[$jsEngine==chakracore]
+# This test is disabled for chakra engine because it depends
+# on v8-option --abort-on-uncaught-exception
+test-abort-uncaught-exception : SKIP
+
+# These tests require worker_threads which is not implemented
+# in node-chakracore
+test-addon-uv-handle-leak : SKIP
+
+[$system==ios]
+#
+# Tests that try to spawn processes, but fail with spawn EPERM
+# These tests are expected to always fail, since iOS won't allow spawning new processes
+#
+test-http-parser-consume : SKIP
+test-process-abort-exitcode : SKIP
+#
+# Tests that also try to spawn processes, but don't fail right away
+#
+test-abort-backtrace : SKIP
