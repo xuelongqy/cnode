@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		7F73C9D2241BCB82002E2E7E /* cnode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7F73C9D0241BCB82002E2E7E /* cnode.cpp */; };
 		7F73C9D3241BCB82002E2E7E /* cnode.h in Headers */ = {isa = PBXBuildFile; fileRef = 7F73C9D1241BCB82002E2E7E /* cnode.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7F73C9F3241BD6C8002E2E7E /* libplatform in Resources */ = {isa = PBXBuildFile; fileRef = 7F73C9D9241BD6C7002E2E7E /* libplatform */; };
+		7F73C9FD241BD6C8002E2E7E /* common.gypi in Resources */ = {isa = PBXBuildFile; fileRef = 7F73C9E3241BD6C7002E2E7E /* common.gypi */; };
+		7F73C9FE241BD6C8002E2E7E /* uv in Resources */ = {isa = PBXBuildFile; fileRef = 7F73C9E4241BD6C7002E2E7E /* uv */; };
+		7F73CA05241BD6C8002E2E7E /* config.gypi in Resources */ = {isa = PBXBuildFile; fileRef = 7F73C9EB241BD6C8002E2E7E /* config.gypi */; };
+		7F73CA07241BD6C8002E2E7E /* openssl in Resources */ = {isa = PBXBuildFile; fileRef = 7F73C9ED241BD6C8002E2E7E /* openssl */; };
 		D9A7619D1F7C63A8006AFE86 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 331917C21EC4702A00F93D52 /* CoreFoundation.framework */; };
 		D9A7619E1F7C63A8006AFE86 /* libcares.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3376C9191EC3922F0007AD59 /* libcares.a */; };
 		D9A7619F1F7C63A8006AFE86 /* libChakraCoreStatic.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3376C91A1EC3922F0007AD59 /* libChakraCoreStatic.a */; };
@@ -34,6 +39,32 @@
 		3376C9201EC3922F0007AD59 /* libzlib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libzlib.a; path = bin/libzlib.a; sourceTree = "<group>"; };
 		7F73C9D0241BCB82002E2E7E /* cnode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = cnode.cpp; path = ../../../../src/cnode.cpp; sourceTree = "<group>"; };
 		7F73C9D1241BCB82002E2E7E /* cnode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = cnode.h; path = ../../../../src/cnode.h; sourceTree = "<group>"; };
+		7F73C9D4241BD6C7002E2E7E /* node_api.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = node_api.h; sourceTree = "<group>"; };
+		7F73C9D5241BD6C7002E2E7E /* v8-version-string.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "v8-version-string.h"; sourceTree = "<group>"; };
+		7F73C9D6241BD6C7002E2E7E /* node_buffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = node_buffer.h; sourceTree = "<group>"; };
+		7F73C9D7241BD6C7002E2E7E /* v8-value-serializer-version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "v8-value-serializer-version.h"; sourceTree = "<group>"; };
+		7F73C9D8241BD6C7002E2E7E /* zconf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zconf.h; sourceTree = "<group>"; };
+		7F73C9D9241BD6C7002E2E7E /* libplatform */ = {isa = PBXFileReference; lastKnownFileType = folder; path = libplatform; sourceTree = "<group>"; };
+		7F73C9DA241BD6C7002E2E7E /* node_object_wrap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = node_object_wrap.h; sourceTree = "<group>"; };
+		7F73C9DB241BD6C7002E2E7E /* v8-inspector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "v8-inspector.h"; sourceTree = "<group>"; };
+		7F73C9DC241BD6C7002E2E7E /* v8-inspector-protocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "v8-inspector-protocol.h"; sourceTree = "<group>"; };
+		7F73C9DD241BD6C7002E2E7E /* v8-profiler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "v8-profiler.h"; sourceTree = "<group>"; };
+		7F73C9DE241BD6C7002E2E7E /* v8config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = v8config.h; sourceTree = "<group>"; };
+		7F73C9DF241BD6C7002E2E7E /* v8-version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "v8-version.h"; sourceTree = "<group>"; };
+		7F73C9E0241BD6C7002E2E7E /* chakra_ttd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = chakra_ttd.h; sourceTree = "<group>"; };
+		7F73C9E1241BD6C7002E2E7E /* node_api_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = node_api_types.h; sourceTree = "<group>"; };
+		7F73C9E2241BD6C7002E2E7E /* zlib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zlib.h; sourceTree = "<group>"; };
+		7F73C9E3241BD6C7002E2E7E /* common.gypi */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = common.gypi; sourceTree = "<group>"; };
+		7F73C9E4241BD6C7002E2E7E /* uv */ = {isa = PBXFileReference; lastKnownFileType = folder; path = uv; sourceTree = "<group>"; };
+		7F73C9E5241BD6C7002E2E7E /* v8-platform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "v8-platform.h"; sourceTree = "<group>"; };
+		7F73C9E6241BD6C7002E2E7E /* node.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = node.h; sourceTree = "<group>"; };
+		7F73C9E7241BD6C8002E2E7E /* v8-util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "v8-util.h"; sourceTree = "<group>"; };
+		7F73C9E8241BD6C8002E2E7E /* uv.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = uv.h; sourceTree = "<group>"; };
+		7F73C9E9241BD6C8002E2E7E /* node_version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = node_version.h; sourceTree = "<group>"; };
+		7F73C9EA241BD6C8002E2E7E /* v8-testing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "v8-testing.h"; sourceTree = "<group>"; };
+		7F73C9EB241BD6C8002E2E7E /* config.gypi */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = config.gypi; sourceTree = "<group>"; };
+		7F73C9EC241BD6C8002E2E7E /* v8.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = v8.h; sourceTree = "<group>"; };
+		7F73C9ED241BD6C8002E2E7E /* openssl */ = {isa = PBXFileReference; lastKnownFileType = folder; path = openssl; sourceTree = "<group>"; };
 		D9A761AE1F7C63A8006AFE86 /* NodeMobile.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NodeMobile.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9A762251F7C674F006097B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -96,6 +127,32 @@
 		D9A762241F7C674F006097B1 /* NodeMobile */ = {
 			isa = PBXGroup;
 			children = (
+				7F73C9E0241BD6C7002E2E7E /* chakra_ttd.h */,
+				7F73C9E3241BD6C7002E2E7E /* common.gypi */,
+				7F73C9EB241BD6C8002E2E7E /* config.gypi */,
+				7F73C9D9241BD6C7002E2E7E /* libplatform */,
+				7F73C9E1241BD6C7002E2E7E /* node_api_types.h */,
+				7F73C9D4241BD6C7002E2E7E /* node_api.h */,
+				7F73C9D6241BD6C7002E2E7E /* node_buffer.h */,
+				7F73C9DA241BD6C7002E2E7E /* node_object_wrap.h */,
+				7F73C9E9241BD6C8002E2E7E /* node_version.h */,
+				7F73C9E6241BD6C7002E2E7E /* node.h */,
+				7F73C9ED241BD6C8002E2E7E /* openssl */,
+				7F73C9E4241BD6C7002E2E7E /* uv */,
+				7F73C9E8241BD6C8002E2E7E /* uv.h */,
+				7F73C9DC241BD6C7002E2E7E /* v8-inspector-protocol.h */,
+				7F73C9DB241BD6C7002E2E7E /* v8-inspector.h */,
+				7F73C9E5241BD6C7002E2E7E /* v8-platform.h */,
+				7F73C9DD241BD6C7002E2E7E /* v8-profiler.h */,
+				7F73C9EA241BD6C8002E2E7E /* v8-testing.h */,
+				7F73C9E7241BD6C8002E2E7E /* v8-util.h */,
+				7F73C9D7241BD6C7002E2E7E /* v8-value-serializer-version.h */,
+				7F73C9D5241BD6C7002E2E7E /* v8-version-string.h */,
+				7F73C9DF241BD6C7002E2E7E /* v8-version.h */,
+				7F73C9EC241BD6C8002E2E7E /* v8.h */,
+				7F73C9DE241BD6C7002E2E7E /* v8config.h */,
+				7F73C9D8241BD6C7002E2E7E /* zconf.h */,
+				7F73C9E2241BD6C7002E2E7E /* zlib.h */,
 				7F73C9D0241BCB82002E2E7E /* cnode.cpp */,
 				7F73C9D1241BCB82002E2E7E /* cnode.h */,
 				D9A762251F7C674F006097B1 /* Info.plist */,
@@ -172,6 +229,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7F73CA05241BD6C8002E2E7E /* config.gypi in Resources */,
+				7F73C9FE241BD6C8002E2E7E /* uv in Resources */,
+				7F73C9F3241BD6C8002E2E7E /* libplatform in Resources */,
+				7F73CA07241BD6C8002E2E7E /* openssl in Resources */,
+				7F73C9FD241BD6C8002E2E7E /* common.gypi in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
