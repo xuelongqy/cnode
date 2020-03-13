@@ -1,7 +1,10 @@
 #include "cnode.h"
 #include "node.h"
+#include <thread>
 
 // 启动node
-int nodeStart(int argc, char *argv[]) {
-    return node::Start(argc, argv);
+void nodeStart(int argc, char *argv[]) {
+    std::thread([argc, argv] {
+        node::Start(argc, argv);
+    }).detach();
 }
