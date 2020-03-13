@@ -1145,6 +1145,8 @@ LINT_CPP_FILES = $(filter-out $(LINT_CPP_EXCLUDE), $(wildcard \
 	src/*/*.c \
 	src/*/*.cc \
 	src/*/*.h \
+	./src/.h \
+	./src/.cpp \
 	test/addons/*/*.cc \
 	test/addons/*/*.h \
 	test/cctest/*.cc \
