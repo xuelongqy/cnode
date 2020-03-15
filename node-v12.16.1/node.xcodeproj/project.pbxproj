@@ -275,8 +275,8 @@
 		7E41D9CF34BA5F7F8EAA78B0 /* connect_wrap.cc in Sources */ = {isa = PBXBuildFile; fileRef = DF929CBDD05DDD5A4F07BD63 /* connect_wrap.cc */; };
 		7E6F24C0D6201809F824FC31 /* node_http_parser_llhttp.cc in Sources */ = {isa = PBXBuildFile; fileRef = BBC84556CF8AC070D68BFB19 /* node_http_parser_llhttp.cc */; };
 		7E849EFCBBC0F27400C12FEC /* test_aliased_buffer.cc in Sources */ = {isa = PBXBuildFile; fileRef = 259988B47CC8DD09E0E4617D /* test_aliased_buffer.cc */; };
-		7F73C9CD241BCB25002E2E7E /* cnode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7F73C9CB241BCB18002E2E7E /* cnode.cpp */; };
-		7F73C9CF241BCB37002E2E7E /* cnode.h in Headers */ = {isa = PBXBuildFile; fileRef = 7F73C9CC241BCB18002E2E7E /* cnode.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7F76B28F241E38FC006B212D /* c_node.cc in Sources */ = {isa = PBXBuildFile; fileRef = 7F76B28D241E38C3006B212D /* c_node.cc */; };
+		7F76B290241E3903006B212D /* c_node.h in Headers */ = {isa = PBXBuildFile; fileRef = 7F76B28E241E38C3006B212D /* c_node.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7F7A98EFDE66E7F0536621FD /* libuv.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DA84780EAD83454EFF0FC852 /* libuv.a */; };
 		80594AA6D5DCABAE67279B59 /* libv8_snapshot.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A753D4094CE350995B20B974 /* libv8_snapshot.a */; };
 		8078E341F87D22674435DF30 /* node_snapshot_stub.cc in Sources */ = {isa = PBXBuildFile; fileRef = F01C009B78E8129CB0FE1F35 /* node_snapshot_stub.cc */; };
@@ -2610,8 +2610,8 @@
 		7E29E2C10F80C2BBBD6C53ED /* string_decoder.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = string_decoder.cc; sourceTree = "<group>"; };
 		7F5916EAE934B07981F428C0 /* _http_common.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = _http_common.js; sourceTree = "<group>"; };
 		7F73C9CA241BCA05002E2E7E /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7F73C9CB241BCB18002E2E7E /* cnode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = cnode.cpp; path = ../../src/cnode.cpp; sourceTree = "<group>"; };
-		7F73C9CC241BCB18002E2E7E /* cnode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = cnode.h; path = ../../src/cnode.h; sourceTree = "<group>"; };
+		7F76B28D241E38C3006B212D /* c_node.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = c_node.cc; sourceTree = "<group>"; };
+		7F76B28E241E38C3006B212D /* c_node.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = c_node.h; sourceTree = "<group>"; };
 		7F7D4D2D3D6CEC977AB90886 /* helpers.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = helpers.js; sourceTree = "<group>"; };
 		802C2106965EB899A957D664 /* promises.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = promises.js; sourceTree = "<group>"; };
 		806480D6B1E3AACD6CA0210C /* spawn_sync.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = spawn_sync.h; sourceTree = "<group>"; };
@@ -3579,8 +3579,8 @@
 		8AA49EB61F9ED0D899E8945C /* src */ = {
 			isa = PBXGroup;
 			children = (
-				7F73C9CB241BCB18002E2E7E /* cnode.cpp */,
-				7F73C9CC241BCB18002E2E7E /* cnode.h */,
+				7F76B28D241E38C3006B212D /* c_node.cc */,
+				7F76B28E241E38C3006B212D /* c_node.h */,
 				7F73C9CA241BCA05002E2E7E /* Info.plist */,
 				91FC419422CC9B0C260F1AF8 /* api */,
 				26E4C5A55AA1021ABE27F01E /* inspector */,
@@ -4192,7 +4192,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7F73C9CF241BCB37002E2E7E /* cnode.h in Headers */,
+				7F76B290241E3903006B212D /* c_node.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5391,7 +5391,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7F73C9CD241BCB25002E2E7E /* cnode.cpp in Sources */,
+				7F76B28F241E38FC006B212D /* c_node.cc in Sources */,
 				AD2EBC559601299076CC1B94 /* node_code_cache.cc in Sources */,
 				DD44C031B0864A4F12CD59FC /* node_snapshot.cc in Sources */,
 			);

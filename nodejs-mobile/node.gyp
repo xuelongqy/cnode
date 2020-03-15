@@ -339,7 +339,6 @@
       ],
 
       'sources': [
-        'src/c_node.cc'
         'src/async_wrap.cc',
         'src/bootstrapper.cc',
         'src/callback_scope.cc',
@@ -404,6 +403,7 @@
         'src/udp_wrap.cc',
         'src/util.cc',
         'src/uv.cc',
+        'src/c_node.cc',
         # headers to make for a more pleasant IDE experience
         'src/aliased_buffer.h',
         'src/async_wrap.h',
@@ -471,6 +471,7 @@
         'src/util-inl.h',
         'deps/http_parser/http_parser.h',
         'deps/v8/include/v8.h',
+        'src/c_node.h',
         # javascript files to make for an even more pleasant IDE experience
         '<@(library_files)',
         # node.gyp is added to the project by default.

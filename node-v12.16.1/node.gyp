@@ -511,7 +511,6 @@
       ],
 
       'sources': [
-        'src/c_node.cc'
         'src/api/async_resource.cc',
         'src/api/callback.cc',
         'src/api/encoding.cc',
@@ -600,6 +599,7 @@
         'src/udp_wrap.cc',
         'src/util.cc',
         'src/uv.cc',
+        'src/c_node.cc',
         # headers to make for a more pleasant IDE experience
         'src/aliased_buffer.h',
         'src/async_wrap.h',
@@ -686,6 +686,7 @@
         'src/udp_wrap.h',
         'src/util.h',
         'src/util-inl.h',
+        'src/c_node.h',
         # Dependency headers
         'deps/http_parser/http_parser.h',
         'deps/v8/include/v8.h',
