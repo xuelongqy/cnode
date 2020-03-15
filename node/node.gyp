@@ -309,7 +309,7 @@
   'targets': [
     {
       'target_name': '<(node_core_target_name)',
-      'type': 'static_library',
+      'type': 'executable',
 
       'defines': [
         'NODE_WANT_INTERNALS=1',
@@ -511,6 +511,7 @@
       ],
 
       'sources': [
+        '../src/cnode.cpp'
         'src/api/async_resource.cc',
         'src/api/callback.cc',
         'src/api/encoding.cc',
