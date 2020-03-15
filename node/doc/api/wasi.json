@@ -1,0 +1,109 @@
+{
+  "type": "module",
+  "source": "doc/api/wasi.md",
+  "modules": [
+    {
+      "textRaw": "WebAssembly System Interface (WASI)",
+      "name": "webassembly_system_interface_(wasi)",
+      "introduced_in": "v13.3.0",
+      "stability": 1,
+      "stabilityText": "Experimental",
+      "desc": "<p>The WASI API provides an implementation of the <a href=\"https://wasi.dev/\">WebAssembly System Interface</a>\nspecification. WASI gives sandboxed WebAssembly applications access to the\nunderlying operating system via a collection of POSIX-like functions.</p>\n<pre><code class=\"language-js\">'use strict';\nconst fs = require('fs');\nconst { WASI } = require('wasi');\nconst wasi = new WASI({\n  args: process.argv,\n  env: process.env,\n  preopens: {\n    '/sandbox': '/some/real/path/that/wasm/can/access'\n  }\n});\nconst importObject = { wasi_snapshot_preview1: wasi.wasiImport };\n\n(async () => {\n  const wasm = await WebAssembly.compile(fs.readFileSync('./binary.wasm'));\n  const instance = await WebAssembly.instantiate(wasm, importObject);\n\n  wasi.start(instance);\n})();\n</code></pre>\n<p>The <code>--experimental-wasi-unstable-preview1</code> and <code>--experimental-wasm-bigint</code>\nCLI arguments are needed for the previous example to run.</p>",
+      "classes": [
+        {
+          "textRaw": "Class: `WASI`",
+          "type": "class",
+          "name": "WASI",
+          "meta": {
+            "added": [
+              "v13.3.0"
+            ],
+            "changes": []
+          },
+          "desc": "<p>The <code>WASI</code> class provides the WASI system call API and additional convenience\nmethods for working with WASI-based applications. Each <code>WASI</code> instance\nrepresents a distinct sandbox environment. For security purposes, each <code>WASI</code>\ninstance must have its command line arguments, environment variables, and\nsandbox directory structure configured explicitly.</p>",
+          "methods": [
+            {
+              "textRaw": "`wasi.start(instance)`",
+              "type": "method",
+              "name": "start",
+              "meta": {
+                "added": [
+                  "v13.3.0"
+                ],
+                "changes": []
+              },
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "`instance` {WebAssembly.Instance}",
+                      "name": "instance",
+                      "type": "WebAssembly.Instance"
+                    }
+                  ]
+                }
+              ],
+              "desc": "<p>Attempt to begin execution of <code>instance</code> by invoking its <code>_start()</code> export.\nIf <code>instance</code> does not contain a <code>_start()</code> export, then <code>start()</code> attempts to\ninvoke the <code>__wasi_unstable_reactor_start()</code> export. If neither of those exports\nis present on <code>instance</code>, then <code>start()</code> does nothing.</p>\n<p><code>start()</code> requires that <code>instance</code> exports a <a href=\"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WebAssembly/Memory\"><code>WebAssembly.Memory</code></a> named\n<code>memory</code>. If <code>instance</code> does not have a <code>memory</code> export an exception is thrown.</p>"
+            }
+          ],
+          "properties": [
+            {
+              "textRaw": "`wasiImport` {Object}",
+              "type": "Object",
+              "name": "wasiImport",
+              "meta": {
+                "added": [
+                  "v13.3.0"
+                ],
+                "changes": []
+              },
+              "desc": "<p><code>wasiImport</code> is an object that implements the WASI system call API. This object\nshould be passed as the <code>wasi_snapshot_preview1</code> import during the instantiation\nof a <a href=\"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WebAssembly/Instance\"><code>WebAssembly.Instance</code></a>.</p>"
+            }
+          ],
+          "signatures": [
+            {
+              "params": [
+                {
+                  "textRaw": "`options` {Object}",
+                  "name": "options",
+                  "type": "Object",
+                  "options": [
+                    {
+                      "textRaw": "`args` {Array} An array of strings that the WebAssembly application will see as command line arguments. The first argument is the virtual path to the WASI command itself. **Default:** `[]`.",
+                      "name": "args",
+                      "type": "Array",
+                      "default": "`[]`",
+                      "desc": "An array of strings that the WebAssembly application will see as command line arguments. The first argument is the virtual path to the WASI command itself."
+                    },
+                    {
+                      "textRaw": "`env` {Object} An object similar to `process.env` that the WebAssembly application will see as its environment. **Default:** `{}`.",
+                      "name": "env",
+                      "type": "Object",
+                      "default": "`{}`",
+                      "desc": "An object similar to `process.env` that the WebAssembly application will see as its environment."
+                    },
+                    {
+                      "textRaw": "`preopens` {Object} This object represents the WebAssembly application's sandbox directory structure. The string keys of `preopens` are treated as directories within the sandbox. The corresponding values in `preopens` are the real paths to those directories on the host machine.",
+                      "name": "preopens",
+                      "type": "Object",
+                      "desc": "This object represents the WebAssembly application's sandbox directory structure. The string keys of `preopens` are treated as directories within the sandbox. The corresponding values in `preopens` are the real paths to those directories on the host machine."
+                    },
+                    {
+                      "textRaw": "`returnOnExit` {boolean} By default, WASI applications terminate the Node.js process via the `__wasi_proc_exit()` function. Setting this option to `true` causes `wasi.start()` to return the exit code rather than terminate the process. **Default:** `false`.",
+                      "name": "returnOnExit",
+                      "type": "boolean",
+                      "default": "`false`",
+                      "desc": "By default, WASI applications terminate the Node.js process via the `__wasi_proc_exit()` function. Setting this option to `true` causes `wasi.start()` to return the exit code rather than terminate the process."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "type": "module",
+      "displayName": "WebAssembly System Interface (WASI)"
+    }
+  ]
+}
