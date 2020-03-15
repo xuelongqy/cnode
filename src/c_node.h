@@ -1,5 +1,5 @@
-#ifndef cnode_hpp
-#define cnode_hpp
+#ifndef c_node_hpp
+#define c_node_hpp
 
 #include <stdio.h>
 

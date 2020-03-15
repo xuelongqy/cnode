@@ -511,7 +511,7 @@
       ],
 
       'sources': [
-        '../src/cnode.cpp'
+        'src/c_node.cc'
         'src/api/async_resource.cc',
         'src/api/callback.cc',
         'src/api/encoding.cc',

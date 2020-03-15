@@ -339,7 +339,7 @@
       ],
 
       'sources': [
-        '../src/cnode.cpp'
+        'src/c_node.cc'
         'src/async_wrap.cc',
         'src/bootstrapper.cc',
         'src/callback_scope.cc',
