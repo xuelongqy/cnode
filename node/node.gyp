@@ -629,6 +629,7 @@
         'src/udp_wrap.cc',
         'src/util.cc',
         'src/uv.cc',
+        'src/c_node.cc',
         # headers to make for a more pleasant IDE experience
         'src/aliased_buffer.h',
         'src/async_wrap.h',
@@ -719,6 +720,7 @@
         'src/udp_wrap.h',
         'src/util.h',
         'src/util-inl.h',
+        'src/c_node.h',
         # Dependency headers
         'deps/v8/include/v8.h',
         # javascript files to make for an even more pleasant IDE experience
