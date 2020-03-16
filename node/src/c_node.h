@@ -7,12 +7,10 @@
 
 /**
  * Before the node program starts
+ * @param id Node program identification
  * @param env Node Environment
- * @param isolate V8 Isolate
- * @param context V8 Context
  */
-typedef void
-(*OnStartNode)(node::Environment *env, v8::Isolate *isolate, v8::Context *context);
+typedef void(*OnStartNode)(int id, node::Environment *env);
 
 /**
  * After the node program stops
@@ -23,7 +21,7 @@ typedef void
 
 extern "C" {
 
-int nodeStart(int argc, char *argv[]);
+int nodeStart(int argc, char *argv[], int id, OnStartNode onStartNode);
 
 int nodeStop(node::Environment *env);
 

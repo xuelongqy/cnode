@@ -222,6 +222,9 @@ class Environment;
 // better suited for a public embedder API.
 NODE_EXTERN int Start(int argc, char* argv[]);
 
+/**! CNode Function **/
+NODE_EXTERN int C_Node_Start(int argc, char* argv[], int id, std::function<void(int, node::Environment*)> onStartNode);
+
 // Tear down Node.js while it is running (there are active handles
 // in the loop and / or actively executing JavaScript code).
 NODE_EXTERN int Stop(Environment* env);

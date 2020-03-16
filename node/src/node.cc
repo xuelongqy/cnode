@@ -1046,6 +1046,46 @@ int Start(int argc, char** argv) {
   return result.exit_code;
 }
 
+/**! CNode Function **/
+int C_Node_Start(int argc, char** argv, int id, std::function<void(int, node::Environment*)> onStartNode) {
+    InitializationResult result = InitializeOncePerProcess(argc, argv);
+    if (result.early_return) {
+        return result.exit_code;
+    }
+
+    {
+        Isolate::CreateParams params;
+        const std::vector<size_t>* indexes = nullptr;
+        std::vector<intptr_t> external_references;
+
+        bool force_no_snapshot =
+                per_process::cli_options->per_isolate->no_node_snapshot;
+        if (!force_no_snapshot) {
+            v8::StartupData* blob = NodeMainInstance::GetEmbeddedSnapshotBlob();
+            if (blob != nullptr) {
+                // TODO(joyeecheung): collect external references and set it in
+                // params.external_references.
+                external_references.push_back(reinterpret_cast<intptr_t>(nullptr));
+                params.external_references = external_references.data();
+                params.snapshot_blob = blob;
+                indexes = NodeMainInstance::GetIsolateDataIndexes();
+            }
+        }
+
+        NodeMainInstance main_instance(&params,
+                                       uv_default_loop(),
+                                       per_process::v8_platform.Platform(),
+                                       result.args,
+                                       result.exec_args,
+                                       indexes);
+        result.exit_code = main_instance.C_Node_Run(id, onStartNode);
+    }
+
+    TearDownOncePerProcess();
+    return result.exit_code;
+}
+
+
 int Stop(Environment* env) {
   env->ExitEnv();
   return 0;
