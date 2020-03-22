@@ -57,8 +57,13 @@ class NodeMainInstance {
   // Start running the Node.js instances, return the exit code when finished.
   int Run();
 
-  /**! CNode Function **/
-  int C_Node_Run(int id, std::function<void(int, node::Environment*)> onStartNode);
+  /**! CNode Patch Start **/
+  int RunAutoLoop(const std::function<void(node::Environment*)>& initNode);
+
+  int Run(const std::function<void(node::Environment*)>& initNode, void* &seal);
+
+  Environment* CreateMainEnvironmentPtr(int* exit_code);
+  /**! CNode Patch End **/
 
   IsolateData* isolate_data() { return isolate_data_.get(); }
 

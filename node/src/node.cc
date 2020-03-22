@@ -118,6 +118,7 @@
 #include <cstring>
 
 #include <string>
+#include <utility>
 #include <vector>
 
 namespace node {
@@ -1046,8 +1047,13 @@ int Start(int argc, char** argv) {
   return result.exit_code;
 }
 
-/**! CNode Function **/
-int C_Node_Start(int argc, char** argv, int id, std::function<void(int, node::Environment*)> onStartNode) {
+int Stop(Environment* env) {
+  env->ExitEnv();
+  return 0;
+}
+
+/**! CNode Patch Start **/
+int Start(int argc, char** argv, std::function<void(node::Environment*)> initNode) {
     InitializationResult result = InitializeOncePerProcess(argc, argv);
     if (result.early_return) {
         return result.exit_code;
@@ -1078,19 +1084,13 @@ int C_Node_Start(int argc, char** argv, int id, std::function<void(int, node::En
                                        result.args,
                                        result.exec_args,
                                        indexes);
-        result.exit_code = main_instance.C_Node_Run(id, onStartNode);
+        result.exit_code = main_instance.RunAutoLoop(initNode);
     }
 
     TearDownOncePerProcess();
     return result.exit_code;
 }
-
-
-int Stop(Environment* env) {
-  env->ExitEnv();
-  return 0;
-}
-
+/**! CNode Patch End **/
 }  // namespace node
 
 #if !HAVE_INSPECTOR

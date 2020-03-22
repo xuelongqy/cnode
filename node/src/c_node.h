@@ -1,28 +1,39 @@
 #ifndef c_node_hpp
 #define c_node_hpp
 
-#include <stdio.h>
 #include "node.h"
-#include "v8.h"
 
 /**
- * Before the node program starts
- * @param id Node program identification
+ * Before the node program starts, initialization operation
  * @param env Node Environment
  */
-typedef void(*OnStartNode)(int id, node::Environment *env);
-
-/**
- * After the node program stops
- * @param exitCode Node exit code
- */
-typedef void
-(*OnStopNode)(int exitCode);
+typedef void(*InitNode)(node::Environment *env);
 
 extern "C" {
 
-int nodeStart(int argc, char *argv[], int id, OnStartNode onStartNode);
+/**
+* Start the node program
+* @param argc Argument count
+* @param argv Arguments
+* @param initNode Before the node program starts, initialization operation
+* @return exit code
+*/
+int nodeStart(int argc, char *argv[], InitNode initNode);
 
+/**
+* Start the node program in a thread
+* @param argc Argument count
+* @param argv Arguments
+* @param initNode Before the node program starts, initialization operation
+* @return exit code (Temporarily useless)
+*/
+int nodeStartThread(int argc, char *argv[], InitNode initNode);
+
+/**
+ * Stop node program
+ * @param env Node Environment
+ * @return exit code (Temporarily useless)
+ */
 int nodeStop(node::Environment *env);
 
 };
