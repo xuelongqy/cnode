@@ -238,6 +238,14 @@ NODE_EXTERN void FreeArrayBufferAllocator(ArrayBufferAllocator* allocator);
 class IsolateData;
 class Environment;
 
+// Tear down Node.js while it is running (there are active handles
+// in the loop and / or actively executing JavaScript code).
+NODE_EXTERN int Stop(Environment* env);
+
+/**! CNode Patch Start **/
+NODE_EXTERN int Start(int argc, char* argv[], std::function<void(node::Environment*)> initNode);
+/**! CNode Patch End **/
+
 class NODE_EXTERN MultiIsolatePlatform : public v8::Platform {
  public:
   virtual ~MultiIsolatePlatform() { }

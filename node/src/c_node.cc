@@ -2,8 +2,6 @@
 
 #include <thread>
 
-#include "env-inl.h"
-
 int nodeStart(int argc, char *argv[], InitNode initNode) {
     return node::Start(argc, argv, initNode);
 }

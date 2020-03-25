@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7F76B22F241E2EE6006B212D /* c_node.cc in Sources */ = {isa = PBXBuildFile; fileRef = 7F76B22D241E2EE6006B212D /* c_node.cc */; };
-		7F76B230241E2EE6006B212D /* c_node.h in Headers */ = {isa = PBXBuildFile; fileRef = 7F76B22E241E2EE6006B212D /* c_node.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7F76B24B241E2EFB006B212D /* v8config.h in Headers */ = {isa = PBXBuildFile; fileRef = 7F76B231241E2EF9006B212D /* v8config.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7F76B24C241E2EFB006B212D /* v8-inspector-protocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 7F76B232241E2EF9006B212D /* v8-inspector-protocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7F76B24D241E2EFB006B212D /* v8-profiler.h in Headers */ = {isa = PBXBuildFile; fileRef = 7F76B233241E2EF9006B212D /* v8-profiler.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -58,8 +56,6 @@
 		3376C91E1EC3922F0007AD59 /* libopenssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libopenssl.a; path = bin/libopenssl.a; sourceTree = "<group>"; };
 		3376C91F1EC3922F0007AD59 /* libuv.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libuv.a; path = bin/libuv.a; sourceTree = "<group>"; };
 		3376C9201EC3922F0007AD59 /* libzlib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libzlib.a; path = bin/libzlib.a; sourceTree = "<group>"; };
-		7F76B22D241E2EE6006B212D /* c_node.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = c_node.cc; path = ../../../../src/c_node.cc; sourceTree = "<group>"; };
-		7F76B22E241E2EE6006B212D /* c_node.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = c_node.h; path = ../../../../src/c_node.h; sourceTree = "<group>"; };
 		7F76B231241E2EF9006B212D /* v8config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = v8config.h; path = ../../../../include/nodejs_moblie/v8config.h; sourceTree = "<group>"; };
 		7F76B232241E2EF9006B212D /* v8-inspector-protocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "v8-inspector-protocol.h"; path = "../../../../include/nodejs_moblie/v8-inspector-protocol.h"; sourceTree = "<group>"; };
 		7F76B233241E2EF9006B212D /* v8-profiler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "v8-profiler.h"; path = "../../../../include/nodejs_moblie/v8-profiler.h"; sourceTree = "<group>"; };
@@ -174,8 +170,6 @@
 				7F76B231241E2EF9006B212D /* v8config.h */,
 				7F76B23E241E2EFA006B212D /* zconf.h */,
 				7F76B245241E2EFA006B212D /* zlib.h */,
-				7F76B22D241E2EE6006B212D /* c_node.cc */,
-				7F76B22E241E2EE6006B212D /* c_node.h */,
 				D9A762251F7C674F006097B1 /* Info.plist */,
 			);
 			path = NodeMobile;
@@ -199,7 +193,6 @@
 				7F76B253241E2EFB006B212D /* node_api.h in Headers */,
 				7F76B24D241E2EFB006B212D /* v8-profiler.h in Headers */,
 				7F76B264241E2EFB006B212D /* v8.h in Headers */,
-				7F76B230241E2EE6006B212D /* c_node.h in Headers */,
 				7F76B25D241E2EFB006B212D /* v8-testing.h in Headers */,
 				7F76B251241E2EFB006B212D /* node_version.h in Headers */,
 				7F76B252241E2EFB006B212D /* v8-inspector.h in Headers */,
@@ -286,7 +279,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7F76B22F241E2EE6006B212D /* c_node.cc in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

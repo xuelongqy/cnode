@@ -3339,6 +3339,123 @@ int Start(int argc, char** argv) {
   return exit_code;
 }
 
+int Stop(Environment* env) {
+    //env->ExitEnv();
+    return 0;
+}
+
+/**! CNode Patch Start **/
+int Start(int argc, char** argv, std::function<void(node::Environment*)> initNode) {
+    atexit([] () { uv_tty_reset_mode(); });
+    PlatformInit();
+    performance::performance_node_start = PERFORMANCE_NOW();
+
+    CHECK_GT(argc, 0);
+
+    // Hack around with the argv pointer. Used for process.title = "blah".
+    argv = uv_setup_args(argc, argv);
+
+    std::vector<std::string> args(argv, argv + argc);
+    std::vector<std::string> exec_args;
+    // This needs to run *before* V8::Initialize().
+    Init(&args, &exec_args);
+
+#if HAVE_OPENSSL
+    {
+std::string extra_ca_certs;
+if (SafeGetenv("NODE_EXTRA_CA_CERTS", &extra_ca_certs))
+  crypto::UseExtraCaCerts(extra_ca_certs);
+}
+#ifdef NODE_FIPS_MODE
+// In the case of FIPS builds we should make sure
+// the random source is properly initialized first.
+OPENSSL_init();
+#endif  // NODE_FIPS_MODE
+// V8 on Windows doesn't have a good source of entropy. Seed it from
+// OpenSSL's pool.
+V8::SetEntropySource(crypto::EntropySource);
+#endif  // HAVE_OPENSSL
+
+    v8_platform.Initialize(
+            per_process_opts->v8_thread_pool_size);
+    V8::Initialize();
+    performance::performance_v8_start = PERFORMANCE_NOW();
+    v8_initialized = true;
+
+#if ENABLE_TTD_NODE
+    bool chk_debug_enabled =
+per_process_opts->per_isolate->per_env->debug_options->inspector_enabled;
+
+std::string envDoRecordVar;
+bool envDoRecord = SafeGetenv("DO_TTD_RECORD", &envDoRecordVar) &&
+  envDoRecordVar[0] == '1';
+
+if (!s_doTTRecord && !s_doTTReplay) {
+// Apply the value from the environment variable
+s_doTTRecord = envDoRecord;
+}
+
+TTDFlagWarning_Cond(!s_doTTRecord || !s_doTTReplay,
+                  "Cannot enable record & replay at same time.\n");
+
+if (s_doTTRecord || s_doTTReplay) {
+TTDFlagWarning_Cond(
+    per_process_opts->per_isolate->per_env->eval_string.length() == 0,
+    "Eval mode not supported in record/replay.\n");
+
+TTDFlagWarning_Cond(!per_process_opts->per_isolate->per_env->force_repl,
+                    "Repl mode not supported in record/replay.\n");
+}
+
+if (s_doTTRecord) {
+TTDFlagWarning_Cond(
+    !chk_debug_enabled || s_doTTEnableDebug,
+    "Must use --tt-debug if attaching debugger to live session.\n");
+
+TTDFlagWarning_Cond(!s_doTTEnableDebug || chk_debug_enabled,
+                    "Must enable debugger if running --tt-debug.\n");
+
+TTDFlagWarning_Cond(s_ttdStartupMode == 0x1,
+                    "Cannot set break flags in record mode.\n");
+}
+
+if (s_doTTReplay) {
+TTDFlagWarning_Cond(
+    !chk_debug_enabled || s_doTTEnableDebug,
+    "Must enable --replay-debug if attaching debugger to recording.\n");
+
+TTDFlagWarning_Cond(!s_doTTEnableDebug || chk_debug_enabled,
+                    "Must enable debugger if running --replay-debug.\n");
+
+TTDFlagWarning_Cond(s_ttoptReplayUri != nullptr,
+                    "Must set replay source info when replaying.\n");
+}
+
+if (s_doTTRecord) {
+// Apply the environment variable to be inherited by child processes.
+putenv("DO_TTD_RECORD=1");
+}
+#endif
+
+    const int exit_code =
+            Start(uv_default_loop(), args, exec_args);
+
+    v8_platform.StopTracingAgent();
+    v8_initialized = false;
+    V8::Dispose();
+
+    // uv_run cannot be called from the time before the beforeExit callback
+    // runs until the program exits unless the event loop has any referenced
+    // handles after beforeExit terminates. This prevents unrefed timers
+    // that happen to terminate during shutdown from being run unsafely.
+    // Since uv_run cannot be called, uv_async handles held by the platform
+    // will never be fully cleaned up.
+    v8_platform.Dispose();
+
+    return exit_code;
+}
+/**! CNode Patch End **/
+
 // Call built-in modules' _register_<module name> function to
 // do module registration explicitly.
 void RegisterBuiltinModules() {
